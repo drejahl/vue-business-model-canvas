@@ -71,14 +71,12 @@
 <script>
 import bmcTitle from './bmc-title.vue';
 import bmcCard from './bmc-card.vue';
-import { VueGrid } from '@liqueflies/vue-grid'
 
 export default {
   name: 'bmc',
   components: {
     bmcTitle,
-    bmcCard,
-    VueGrid
+    bmcCard
   },
   props: {
     canvas: Object

@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: path.resolve(__dirname + '/src/plugin.js'),
+  entry: path.resolve(__dirname + '/src/business-model-canvas.vue'),
   output: {
     path: path.resolve(__dirname + '/dist/'),
     filename: 'vue-bmc.min.js',

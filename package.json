@@ -10,8 +10,6 @@
     "build": "rimraf ./dist && webpack --config ./webpack.config.js"
   },
   "dependencies": {
-    "@liqueflies/vue-grid": "0.0.4",
-    "vue": "^2.5.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
