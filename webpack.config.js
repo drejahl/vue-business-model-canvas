@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
   entry: path.resolve(__dirname + '/src/business-model-canvas.vue'),
   output: {
-    path: path.resolve(__dirname + '/dist/'),
+    path: path.resolve(__dirname + '/lib/'),
     filename: 'vue-bmc.min.js',
     libraryTarget: 'umd',
 

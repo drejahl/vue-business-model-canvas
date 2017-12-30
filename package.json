@@ -3,10 +3,7 @@
   "version": "0.0.5",
   "description": "Business Model Canvas component for VueJS 2.x",
   "author": "Dirk Rejahl",
-  "main": "./dist/vue-bmc.min.js",
-  "files": [
-    "./dist"
-  ],
+  "main": "./lib/vue-bmc.min.js",
   "scripts": {
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
