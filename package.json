@@ -1,6 +1,6 @@
 {
   "name": "vue-business-model-canvas",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Business Model Canvas component for VueJS 2.x",
   "author": "Dirk Rejahl",
   "main": "./dist/vue-bmc.min.js",
@@ -9,8 +9,7 @@
     "test": "npm run unit",
     "build": "rimraf ./dist && webpack --config ./webpack.config.js"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
