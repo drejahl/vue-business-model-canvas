@@ -5,7 +5,7 @@
       <row>
         <column :sm="2" :md="2" class="high-box">
           <div class="bmc-area">
-            <bmcTitle @add="addPartner">Partner</bmcTitle>
+            <bmcTitle @add="newPartner = true">Partner</bmcTitle>
             <bmcCard v-for="card in canvas.partners" :card="card" :key="card.id"/>
           </div>
         </column>
@@ -65,31 +65,35 @@
         </column>
       </row>
     </container>
+    <newPartner v-if="newPartner" @close="addPartner"/>
   </div>
 </template>
 
 <script>
 import bmcTitle from './bmc-title.vue';
 import bmcCard from './bmc-card.vue';
+import newPartner from './new-partner.vue';
 
 export default {
   name: 'bmc',
   components: {
     bmcTitle,
-    bmcCard
+    bmcCard,
+    newPartner
   },
   props: {
     canvas: Object
   },
   data () {
     return {
+      newPartner: false,
+      partner: {description:""}
     }
   },
   methods: {
-    addPartner: function() {
-      console.log("Add partner");
-      let partner = {"description": "New partner"};
-      this.canvas.partners.push(partner);
+    addPartner: function(partner) {
+      this.newPartner = false;
+      this.canvas.partners = this.canvas.partners.concat( [partner] );
     }
   }
 }
