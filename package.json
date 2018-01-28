@@ -1,6 +1,6 @@
 {
   "name": "vue-business-model-canvas",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Business Model Canvas component for VueJS 2.x",
   "author": "Dirk Rejahl",
   "main": "./lib/vue-bmc.min.js",
