@@ -5,11 +5,16 @@
   "author": "Dirk Rejahl",
   "main": "./lib/vue-bmc.min.js",
   "scripts": {
+    "dev": "webpack-dev-server --inline --progress --config test/ui/build/webpack.dev.conf.js",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
     "build": "rimraf ./dist && webpack --config ./webpack.config.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@liqueflies/vue-grid": "0.0.4",
+    "vue": "^2.5.13",
+    "vue-color": "^2.4.3"
+  },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
