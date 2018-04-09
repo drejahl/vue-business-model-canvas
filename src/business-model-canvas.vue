@@ -9,91 +9,39 @@
           <v-flex d-flex>
             <v-layout row wrap>
               <v-flex d-flex xs12>
-                <v-card color="red lighten-2" dark>
-                  <v-card-title primary class="title">Key Activities</v-card-title>
-                  <v-card-text></v-card-text>
-                </v-card>
+                <BmcKeyActivities :activities="canvas.keyActivities"/>
               </v-flex>
               <v-flex d-flex xs12>
-                <v-card color="red lighten-2" dark>
-                  <v-card-title primary class="title">Key Resources</v-card-title>
-                  <v-card-text></v-card-text>
-                </v-card>
+                <BmcKeyResources :resources="canvas.keyResources"/>
               </v-flex>
             </v-layout>
           </v-flex>
         </v-layout>
       </v-flex>
       <v-flex d-flex xs12 sm6 md2>
-        <v-card color="red lighten-3">
-          <v-toolbar flat color="red lighten-2" dark height="30px">
-            <v-toolbar-side-icon></v-toolbar-side-icon>
-            <v-toolbar-title  class="body-2">Value Propositions</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-menu offset-y>
-              <v-btn icon slot="activator">
-                <v-icon>more_vert</v-icon>
-              </v-btn>
-              <v-list>
-                <v-list-tile @click="">
-                  <v-list-tile-title>New</v-list-tile-title>
-                </v-list-tile>
-              </v-list>
-            </v-menu>
-          </v-toolbar>
-          <v-card-text></v-card-text>
-        </v-card>
+        <BmcValuePropositions :propositions="canvas.valuePropositions"/>
       </v-flex>
       <v-flex d-flex xs12 sm6 md2 child-flex>
         <v-layout row wrap>
           <v-flex d-flex>
-            <v-card color="green lighten-2" dark>
-              <v-card-title primary class="title">Customer Relationships</v-card-title>
-              <v-card-text></v-card-text>
-            </v-card>
+            <BmcCustomerRelationships :relationships="canvas.customerRelationships"/>
           </v-flex>
           <v-flex d-flex>
-            <v-card color="green lighten-2" dark>
-              <v-card-text
-              v-text="lorem.slice(0, 90)">
-              </v-card-text>
-            </v-card>
+            <BmcChannels :channels="canvas.channels"/>
           </v-flex>
         </v-layout>
       </v-flex>
       <v-flex d-flex xs12 sm6 md2>
-        <v-card color="teal lighten-3">
-          <v-toolbar flat color="teal lighten-2" dark height="30px">
-            <v-toolbar-side-icon></v-toolbar-side-icon>
-            <v-toolbar-title  class="body-2">Customer Segments</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-menu offset-y>
-              <v-btn icon slot="activator">
-                <v-icon>more_vert</v-icon>
-              </v-btn>
-              <v-list>
-                <v-list-tile @click="">
-                  <v-list-tile-title>New</v-list-tile-title>
-                </v-list-tile>
-              </v-list>
-            </v-menu>
-          </v-toolbar>
-          <v-card-text></v-card-text>
-        </v-card>
+        <BmcCustomerSegments :segments="canvas.customerSegments"/>
       </v-flex>
     </v-layout>
     <v-layout row wrap>
       <v-flex d-flex xs12 sm5 md5>
-        <v-card color="purple" dark>
-          <v-card-title primary class="title">Lorem</v-card-title>
-          <v-card-text>ABC</v-card-text>
-        </v-card>
+        <BmcCostStructure :costs="canvas.costStructure"/>
       </v-flex>
       <v-flex d-flex xs12 sm5 md5>
         <v-card color="blue lighten-2" dark>
-          <v-card-text
-          v-text="lorem.slice(0, 100)">
-          </v-card-text>
+          <BmcRevenueStreams :revenues="canvas.revenueStreams"/>
         </v-card>
       </v-flex>
     </v-layout>
@@ -102,11 +50,27 @@
 
 <script>
 import BmcKeyPartners from './bmc-key-partners.vue';
+import BmcKeyActivities from './bmc-key-activities.vue';
+import BmcKeyResources from './bmc-key-resources.vue';
+import BmcValuePropositions from './bmc-value-propositions.vue';
+import BmcCustomerRelationships from './bmc-customer-relationships.vue';
+import BmcChannels from './bmc-channels.vue';
+import BmcCustomerSegments from './bmc-customer-segments.vue';
+import BmcCostStructure from './bmc-cost-structure.vue';
+import BmcRevenueStreams from './bmc-revenue-streams.vue';
 
 export default {
   name: 'VueBusinessModelCanvas',
   components: {
-    BmcKeyPartners
+    BmcKeyPartners,
+    BmcKeyActivities,
+    BmcKeyResources,
+    BmcValuePropositions,
+    BmcCustomerRelationships,
+    BmcChannels,
+    BmcCustomerSegments,
+    BmcCostStructure,
+    BmcRevenueStreams
   },
   props: {
     'canvas': Object

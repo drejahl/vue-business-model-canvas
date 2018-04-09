@@ -5,11 +5,11 @@
       <v-btn icon style="margin-left: 0px;" @click.native.stop="create">
         <v-icon>add</v-icon>
       </v-btn>
-      <v-toolbar-title style="margin-left: 0px;" class="body-1">Key Partners</v-toolbar-title>
+      <v-toolbar-title style="margin-left: 0px;" class="body-1">Customer Relationships</v-toolbar-title>
     </v-toolbar>
     <v-container fluid style="min-height: 0;" grid-list-lg>
       <v-layout row wrap>
-        <v-flex xs12 v-for="(p,i) in partners" :key="p.id">
+        <v-flex xs12 v-for="(p,i) in relationships" :key="p.id">
           <v-card color="blue lighten-2" class="white--text">
             <v-toolbar flat color="blue lighten-1" dark height="20px">
               <v-btn flat dark icon small style="margin-left: 0px;" @click.native.stop="edit(i)">
@@ -31,21 +31,21 @@
     <v-dialog v-model="dialog" persistent max-width="500px">
       <v-card>
         <v-card-title>
-          <span class="headline">Key Partner</span>
+          <span class="headline">Customer Relationship</span>
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex xs12 sm12 md8>
-                <v-text-field label="Name" required v-model="partner.name"></v-text-field>
+                <v-text-field label="Name" required v-model="relationship.name"></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-select label="Type" multiple autocomplete chips v-model="partner.type"
+                <v-select label="Type" multiple autocomplete chips v-model="relationship.type"
                   :items="['Technology', 'Sales', 'Marketing', 'Operations', 'Strategic']">
                 </v-select>
               </v-flex>
               <v-flex xs12 sm12 md12>
-                <v-text-field multi-line label="Description" v-model="partner.description"></v-text-field>
+                <v-text-field multi-line label="Description" v-model="relationship.description"></v-text-field>
               </v-flex>
             </v-layout>
           </v-container>
@@ -64,45 +64,45 @@
 import uuidv1 from 'uuid/v1';
 
 export default {
-  name: 'BmcKeyPartners',
+  name: 'BmcCustomerRelationships',
   components: {
   },
   props: {
-    'partners': Array
+    'relationships': Array
   },
   data () {
     return {
       dialog: false,
       editIdx: null,
-      partner: {description:""}
+      relationship: {description:""}
     }
   },
   mounted: function() {
   },
   methods: {
     del: function(i) {
-      this.partners.splice(i, 1);
+      this.relationships.splice(i, 1);
     },
     close: function() {
       this.dialog=false;
     },
     create: function() {
-      this.partner = {};
+      this.relationship = {};
       this.dialog=true;
     },
     edit: function(i) {
-      this.partner =  Object.assign( {}, this.partners[i]);
+      this.relationship =  Object.assign( {}, this.relationships[i]);
       this.editIdx = i;
       this.dialog=true;
     },
     save: function(i) {
       this.dialog=false;
 
-      if (!this.partner.id) {
-        this.partner.id=uuidv1();
-        this.partners.push(this.partner);
+      if (!this.relationship.id) {
+        this.relationship.id=uuidv1();
+        this.relationships.push(this.relationship);
       } else {
-        this.partners[this.editIdx] = Object.assign( {}, this.partner);
+        this.relationships[this.editIdx] = Object.assign( {}, this.relationship);
       }
     }
   }
