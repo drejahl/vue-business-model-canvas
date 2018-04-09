@@ -11,9 +11,9 @@
     "build": "rimraf ./dist && webpack --config ./webpack.config.js"
   },
   "dependencies": {
-    "@liqueflies/vue-grid": "0.0.4",
+    "uuid": "^3.2.1",
     "vue": "^2.5.13",
-    "vue-color": "^2.4.3"
+    "vuetify": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

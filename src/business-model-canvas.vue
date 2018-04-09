@@ -1,143 +1,126 @@
 <template>
-  <div class="bmc">
-    <h1>{{canvas.name}}</h1>
-    <container xl="1200">
-      <row>
-        <column :sm="2" :md="2" class="high-box">
-          <div class="bmc-area">
-            <bmcTitle @add="newPartner = true">Partner</bmcTitle>
-            <bmcCard v-for="card in canvas.partners" :card="card" :key="card.id"/>
-          </div>
-        </column>
-        <column :sm="2" :md="2">
-          <row>
-            <column :sm="10" :md="10" class="box">
-              <div class="bmc-area">
-                <bmcTitle>Key Activities</bmcTitle>
-              </div>
-            </column>
-          </row>
-          <row>
-            <column :sm="10" :md="10" class="box">
-              <div class="bmc-area">
-                <bmcTitle>Key Resources</bmcTitle>
-              </div>
-            </column>
-          </row>
-        </column>
-        <column :sm="2" :md="2" class="high-box">
-          <div class="bmc-area">
-            <bmcTitle>Value Proposition</bmcTitle>
-          </div>
-        </column>
-        <column :sm="2" :md="2">
-          <row>
-            <column :sm="10" :md="10" class="box">
-              <div class="bmc-area">
-                <bmcTitle>Customer Relation</bmcTitle>
-              </div>
-            </column>
-          </row>
-          <row>
-            <column :sm="10" :md="10" class="box">
-              <div class="bmc-area">
-                <bmcTitle>Channels</bmcTitle>
-              </div>
-            </column>
-          </row>
-        </column>
-        <column :sm="2" :md="2" class="high-box">
-          <div class="bmc-area">
-            <bmcTitle>Customer Segments</bmcTitle>
-          </div>
-        </column>
-      </row>
-      <row>
-        <column :sm="5" :md="5" class="box">
-          <div class="bmc-area">
-            <bmcTitle>Costs</bmcTitle>
-          </div>
-        </column>
-        <column :sm="5" :md="5" class="box">
-          <div class="bmc-area">
-            <bmcTitle>Revenues</bmcTitle>
-          </div>
-        </column>
-      </row>
-    </container>
-    <newPartner v-if="newPartner" @close="addPartner"/>
-  </div>
+  <v-container fluid grid-list-md>
+    <v-layout row wrap>
+      <v-flex d-flex xs12 sm6 md2>
+        <BmcKeyPartners :partners="canvas.keyPartners"/>
+      </v-flex>
+      <v-flex d-flex xs12 sm6 md2>
+        <v-layout row wrap>
+          <v-flex d-flex>
+            <v-layout row wrap>
+              <v-flex d-flex xs12>
+                <v-card color="red lighten-2" dark>
+                  <v-card-title primary class="title">Key Activities</v-card-title>
+                  <v-card-text></v-card-text>
+                </v-card>
+              </v-flex>
+              <v-flex d-flex xs12>
+                <v-card color="red lighten-2" dark>
+                  <v-card-title primary class="title">Key Resources</v-card-title>
+                  <v-card-text></v-card-text>
+                </v-card>
+              </v-flex>
+            </v-layout>
+          </v-flex>
+        </v-layout>
+      </v-flex>
+      <v-flex d-flex xs12 sm6 md2>
+        <v-card color="red lighten-3">
+          <v-toolbar flat color="red lighten-2" dark height="30px">
+            <v-toolbar-side-icon></v-toolbar-side-icon>
+            <v-toolbar-title  class="body-2">Value Propositions</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-menu offset-y>
+              <v-btn icon slot="activator">
+                <v-icon>more_vert</v-icon>
+              </v-btn>
+              <v-list>
+                <v-list-tile @click="">
+                  <v-list-tile-title>New</v-list-tile-title>
+                </v-list-tile>
+              </v-list>
+            </v-menu>
+          </v-toolbar>
+          <v-card-text></v-card-text>
+        </v-card>
+      </v-flex>
+      <v-flex d-flex xs12 sm6 md2 child-flex>
+        <v-layout row wrap>
+          <v-flex d-flex>
+            <v-card color="green lighten-2" dark>
+              <v-card-title primary class="title">Customer Relationships</v-card-title>
+              <v-card-text></v-card-text>
+            </v-card>
+          </v-flex>
+          <v-flex d-flex>
+            <v-card color="green lighten-2" dark>
+              <v-card-text
+              v-text="lorem.slice(0, 90)">
+              </v-card-text>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-flex>
+      <v-flex d-flex xs12 sm6 md2>
+        <v-card color="teal lighten-3">
+          <v-toolbar flat color="teal lighten-2" dark height="30px">
+            <v-toolbar-side-icon></v-toolbar-side-icon>
+            <v-toolbar-title  class="body-2">Customer Segments</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-menu offset-y>
+              <v-btn icon slot="activator">
+                <v-icon>more_vert</v-icon>
+              </v-btn>
+              <v-list>
+                <v-list-tile @click="">
+                  <v-list-tile-title>New</v-list-tile-title>
+                </v-list-tile>
+              </v-list>
+            </v-menu>
+          </v-toolbar>
+          <v-card-text></v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout>
+    <v-layout row wrap>
+      <v-flex d-flex xs12 sm5 md5>
+        <v-card color="purple" dark>
+          <v-card-title primary class="title">Lorem</v-card-title>
+          <v-card-text>ABC</v-card-text>
+        </v-card>
+      </v-flex>
+      <v-flex d-flex xs12 sm5 md5>
+        <v-card color="blue lighten-2" dark>
+          <v-card-text
+          v-text="lorem.slice(0, 100)">
+          </v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-import bmcTitle from './bmc-title.vue';
-import bmcCard from './bmc-card.vue';
-import newPartner from './new-partner.vue';
+import BmcKeyPartners from './bmc-key-partners.vue';
 
 export default {
-  name: 'bmc',
+  name: 'VueBusinessModelCanvas',
   components: {
-    bmcTitle,
-    bmcCard,
-    newPartner
+    BmcKeyPartners
   },
   props: {
-    canvas: Object
+    'canvas': Object
   },
   data () {
     return {
-      newPartner: false,
-      partner: {description:""}
+      lorem: `Lorem ipsum dolor sit amet, mel at clita quando. Te sit oratio vituperatoribus, nam ad ipsum posidonium mediocritatem, explicari dissentiunt cu mea. Repudiare disputationi vim in, mollis iriure nec cu, alienum argumentum ius ad. Pri eu justo aeque torquatos.`
     }
   },
   methods: {
-    addPartner: function(partner) {
-      this.newPartner = false;
-      this.canvas.partners = this.canvas.partners.concat( [partner] );
-    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-
-.bmc-area {
-  margin: 5px;
-  background-color: white;
-  border-width: 1px;
-  border-style: solid;
-  border-color: black;
-}
-
-.box {
-  border-width: 0px;
-  border-style: solid;
-  border-color: black;
-  background-color: lightgrey;
-  height: 100px;
-}
-
-.high-box {
-  padding-left: -10px;
-  border-width: 0px;
-  border-style: solid;
-  border-color: black;
-  background-color: lightgrey;
-  height: 200px;
-}
 </style>
