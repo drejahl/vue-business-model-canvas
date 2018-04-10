@@ -87,7 +87,7 @@ export default {
       this.dialog=false;
     },
     create: function() {
-      this.activity = {};
+      this.activity = { type: [] };
       this.dialog=true;
     },
     edit: function(i) {
