@@ -87,7 +87,7 @@ export default {
       this.dialog=false;
     },
     create: function() {
-      this.relationship = {};
+      this.relationship = { type: [] };
       this.dialog=true;
     },
     edit: function(i) {
