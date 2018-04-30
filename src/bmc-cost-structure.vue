@@ -38,10 +38,14 @@
             <v-layout wrap>
               <v-flex xs12 sm12 md8>
                 <v-text-field label="Name" required v-model="cost.name"></v-text-field>
+                <v-select :items="businessModel.keyActivities" v-model="cost.activityRef"
+                  label="Associated activities" item-text="name" multiple chips item-value="id"></v-select>
+                <v-select :items="businessModel.keyResources" v-model="cost.resourceRef"
+                  label="Associated resources" item-text="name" multiple chips item-value="id"></v-select>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-select label="Type" multiple autocomplete chips v-model="cost.type"
-                  :items="['Technology', 'Sales', 'Marketing', 'Operations', 'Strategic']">
+                  :items="['One Time', 'Recurring']">
                 </v-select>
               </v-flex>
               <v-flex xs12 sm12 md12>
@@ -68,13 +72,14 @@ export default {
   components: {
   },
   props: {
-    'costs': Array
+    'costs': Array,
+    'businessModel': Object
   },
   data () {
     return {
       dialog: false,
       editIdx: null,
-      cost: {description:""}
+      cost: {description:"", type: [], activityRef: [], resourceRef: []}
     }
   },
   mounted: function() {
@@ -87,11 +92,13 @@ export default {
       this.dialog=false;
     },
     create: function() {
-      this.cost = { type: [] };
+      this.cost = { description:"", type: [], activityRef: [], resourceRef: [] };
       this.dialog=true;
     },
     edit: function(i) {
       this.cost =  Object.assign( {}, this.costs[i]);
+      if (!this.cost.activityRef) {this.cost.activityRef=[]}
+      if (!this.cost.resourceRef) {this.cost.resourceRef=[]}
       this.editIdx = i;
       this.dialog=true;
     },

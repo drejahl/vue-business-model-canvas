@@ -38,10 +38,19 @@
             <v-layout wrap>
               <v-flex xs12 sm12 md8>
                 <v-text-field label="Name" required v-model="partner.name"></v-text-field>
+                <v-select :items="businessModel.keyActivities" v-model="partner.activityRef"
+                  label="Associated activities" item-text="name" multiple chips item-value="id"></v-select>
+                <v-select :items="businessModel.keyResources" v-model="partner.resourceRef"
+                  label="Associated resources" item-text="name" multiple chips item-value="id"></v-select>
               </v-flex>
-              <v-flex xs12 sm6>
+              <v-flex xs12 sm7>
                 <v-select label="Type" multiple autocomplete chips v-model="partner.type"
                   :items="['Technology', 'Sales', 'Marketing', 'Operations', 'Strategic']">
+                </v-select>
+              </v-flex>
+              <v-flex xs12 sm7>
+                <v-select label="Stakeholder Type" multiple autocomplete chips v-model="partner.stakeholderType"
+                  :items="['Internal', '3rd Party']">
                 </v-select>
               </v-flex>
               <v-flex xs12 sm12 md12>
@@ -68,16 +77,15 @@ export default {
   components: {
   },
   props: {
-    'partners': Array
+    'partners': Array,
+    'businessModel': Object
   },
   data () {
     return {
       dialog: false,
       editIdx: null,
-      partner: {description:""}
+      partner: {description:"", type: [], stakeholderType: [], activityRef: [], resourceRef: []}
     }
-  },
-  mounted: function() {
   },
   methods: {
     del: function(i) {
@@ -87,11 +95,13 @@ export default {
       this.dialog=false;
     },
     create: function() {
-      this.partner = { type: [] };
+      this.partner = { description:"", type: [], stakeholderType: [], activityRef: [], resourceRef: [] };
       this.dialog=true;
     },
     edit: function(i) {
       this.partner =  Object.assign( {}, this.partners[i]);
+      if (!this.partner.activityRef) {this.partner.activityRef=[]}
+      if (!this.partner.resourceRef) {this.partner.resourceRef=[]}
       this.editIdx = i;
       this.dialog=true;
     },

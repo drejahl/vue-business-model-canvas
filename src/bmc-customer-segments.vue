@@ -36,12 +36,18 @@
         <v-card-text>
           <v-container grid-list-md>
             <v-layout wrap>
-              <v-flex xs12 sm12 md8>
+              <v-flex xs12 sm12 md12>
                 <v-text-field label="Name" required v-model="segment.name"></v-text-field>
+                <v-select :items="businessModel.channels" v-model="segment.primaryChannelRef"
+                  label="Primary channel" item-text="name" multiple chips item-value="id"></v-select>
+                <v-select :items="businessModel.channels" v-model="segment.secondaryChannelRef"
+                  label="Secondary channel" item-text="name" multiple chips item-value="id"></v-select>
+                  <v-select :items="businessModel.customerRelationships" v-model="segment.customerRelationshipRef"
+                    label="Associated customer relationships" item-text="name" multiple chips item-value="id"></v-select>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-select label="Type" multiple autocomplete chips v-model="segment.type"
-                  :items="['Technology', 'Sales', 'Marketing', 'Operations', 'Strategic']">
+                  :items="['Consumer', 'Prosumer', 'SoHo', 'SME', 'Enterprise']">
                 </v-select>
               </v-flex>
               <v-flex xs12 sm12 md12>
@@ -68,13 +74,14 @@ export default {
   components: {
   },
   props: {
-    'segments': Array
+    'segments': Array,
+    'businessModel': Object
   },
   data () {
     return {
       dialog: false,
       editIdx: null,
-      segment: {description:""}
+      segment: {description:"", type: [], promaryChannelRef: [], secondaryChannelRef: [], customerRelationshipRef: []}
     }
   },
   mounted: function() {
@@ -87,11 +94,14 @@ export default {
       this.dialog=false;
     },
     create: function() {
-      this.segment = { type: [] };
+      this.segment = { description:"", type: [], promaryChannelRef: [], secondaryChannelRef: [], customerRelationshipRef: [] };
       this.dialog=true;
     },
     edit: function(i) {
       this.segment =  Object.assign( {}, this.segments[i]);
+      if (!this.segment.primaryChannelRef) {this.segment.primaryChannelRef=[]}
+      if (!this.segment.secondaryChannelRef) {this.segment.secondaryChannelRef=[]}
+      if (!this.segment.customerRelationshipRef) {this.segment.customerRelationshipRef=[]}
       this.editIdx = i;
       this.dialog=true;
     },
