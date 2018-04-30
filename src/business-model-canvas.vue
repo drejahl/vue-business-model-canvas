@@ -2,7 +2,7 @@
   <v-container fluid grid-list-md>
     <v-layout row wrap>
       <v-flex d-flex xs12 sm6 md2>
-        <BmcKeyPartners :partners="canvas.keyPartners"/>
+        <BmcKeyPartners :partners="canvas.keyPartners" :businessModel="canvas"/>
       </v-flex>
       <v-flex d-flex xs12 sm6 md2>
         <v-layout row wrap>
@@ -32,12 +32,12 @@
         </v-layout>
       </v-flex>
       <v-flex d-flex xs12 sm6 md2>
-        <BmcCustomerSegments :segments="canvas.customerSegments"/>
+        <BmcCustomerSegments :segments="canvas.customerSegments" :businessModel="canvas"/>
       </v-flex>
     </v-layout>
     <v-layout row wrap>
       <v-flex d-flex xs12 sm5 md5>
-        <BmcCostStructure :costs="canvas.costStructure"/>
+        <BmcCostStructure :costs="canvas.costStructure" :businessModel="canvas"/>
       </v-flex>
       <v-flex d-flex xs12 sm5 md5>
         <v-card color="blue lighten-2" dark>
@@ -77,7 +77,6 @@ export default {
   },
   data () {
     return {
-      lorem: `Lorem ipsum dolor sit amet, mel at clita quando. Te sit oratio vituperatoribus, nam ad ipsum posidonium mediocritatem, explicari dissentiunt cu mea. Repudiare disputationi vim in, mollis iriure nec cu, alienum argumentum ius ad. Pri eu justo aeque torquatos.`
     }
   },
   methods: {

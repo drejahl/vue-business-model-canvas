@@ -41,7 +41,7 @@
               </v-flex>
               <v-flex xs12 sm6>
                 <v-select label="Type" multiple autocomplete chips v-model="resource.type"
-                  :items="['Technology', 'Sales', 'Marketing', 'Operations', 'Strategic']">
+                  :items="['Assets', 'Intellectual Property', 'Work Force']">
                 </v-select>
               </v-flex>
               <v-flex xs12 sm12 md12>
