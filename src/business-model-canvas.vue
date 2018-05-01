@@ -85,5 +85,29 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
+.sic-card-body {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: left;
+}
+.sic-card-text {
+  font-size: 12px;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+.sic-card-chip {
+  background-color: white;
+  font-size: 12px;
+  color: black;
+  height: 18px;
+  border-radius: 9px;
+  display: inline-block;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-bottom: 5px;
+  margin-right: 3px;
+}
 </style>

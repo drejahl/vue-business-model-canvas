@@ -1,33 +1,32 @@
 <template>
-  <v-card color="teal lighten-3">
-    <v-toolbar flat color="teal lighten-2" dark height="30px">
+  <v-card color="grey lighten-2">
+    <v-toolbar flat color="grey darken-1" dark height="40px">
       <!--v-toolbar-side-icon></v-toolbar-side-icon-->
       <v-btn icon style="margin-left: 0px;" @click.native.stop="create">
         <v-icon>add</v-icon>
       </v-btn>
       <v-toolbar-title style="margin-left: 0px;" class="body-1">Key Partners</v-toolbar-title>
     </v-toolbar>
-    <v-container fluid style="min-height: 0;" grid-list-lg>
-      <v-layout row wrap>
-        <v-flex xs12 v-for="(p,i) in partners" :key="p.id">
-          <v-card color="blue lighten-2" class="white--text">
-            <v-toolbar flat color="blue lighten-1" dark height="20px">
-              <v-btn flat dark icon small style="margin-left: 0px;" @click.native.stop="edit(i)">
-                <v-icon size="16px">edit</v-icon>
-              </v-btn>
-              <v-toolbar-title style="margin-left: 0px;" class="caption">{{p.name}}</v-toolbar-title>
-              <v-spacer></v-spacer>
-              <v-btn flat dark icon small style="margin-right: 0px;" @click.native.stop="del(i)">
-                <v-icon size="16px">clear</v-icon>
-              </v-btn>
-            </v-toolbar>
-            <v-card-title primary-title>
-              <div class="caption">{{p.description}}</div>
-            </v-card-title>
-          </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
+    <v-layout row wrap style="min-height: 50px;">
+      <v-flex xs12 v-for="(p,i) in partners" :key="p.id">
+        <v-card color="teal lighten-2" class="white--text">
+          <v-toolbar flat color="teal lighten-1" dark height="20px">
+            <v-btn flat dark icon small style="margin-left: 0px;" @click.native.stop="edit(i)">
+              <v-icon size="16px">edit</v-icon>
+            </v-btn>
+            <v-toolbar-title style="margin-left: 0px;" class="caption">{{p.name}}</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-btn flat dark icon small style="margin-right: 0px;" @click.native.stop="del(i)">
+              <v-icon size="16px">clear</v-icon>
+            </v-btn>
+          </v-toolbar>
+          <div class="sic-card-body">
+            <p class="sic-card-text">{{p.description}}</p>
+            <div v-for="t in p.type" class="sic-card-chip">{{t}}</div>
+          </div>
+        </v-card>
+      </v-flex>
+    </v-layout>
     <v-dialog v-model="dialog" persistent max-width="500px">
       <v-card>
         <v-card-title>
