@@ -21,13 +21,17 @@
       <v-flex d-flex xs12 sm6 md2>
         <BmcValuePropositions :propositions="canvas.valuePropositions"/>
       </v-flex>
-      <v-flex d-flex xs12 sm6 md2 child-flex>
+      <v-flex d-flex xs12 sm6 md2>
         <v-layout row wrap>
           <v-flex d-flex>
-            <BmcCustomerRelationships :relationships="canvas.customerRelationships"/>
-          </v-flex>
-          <v-flex d-flex>
-            <BmcChannels :channels="canvas.channels"/>
+            <v-layout row wrap>
+              <v-flex d-flex xs12>
+                <BmcCustomerRelationships :relationships="canvas.customerRelationships"/>
+              </v-flex>
+              <v-flex d-flex xs12>
+                <BmcChannels :channels="canvas.channels"/>
+              </v-flex>
+            </v-layout>
           </v-flex>
         </v-layout>
       </v-flex>
