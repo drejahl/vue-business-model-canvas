@@ -14,13 +14,13 @@
             <v-btn flat dark icon small style="margin-left: 0px;" @click.native.stop="edit(i)">
               <v-icon size="16px">edit</v-icon>
             </v-btn>
-            <v-toolbar-title style="margin-left: 0px;" class="caption">{{p.name}}</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn flat dark icon small style="margin-right: 0px;" @click.native.stop="del(i)">
               <v-icon size="16px">clear</v-icon>
             </v-btn>
           </v-toolbar>
           <div class="sic-card-body">
+            <p class="body-2">{{p.name}}</p>
             <p class="sic-card-text">{{p.description}}</p>
             <div v-for="t in p.type" class="sic-card-chip">{{t}}</div>
           </div>
