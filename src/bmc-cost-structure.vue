@@ -20,7 +20,7 @@
             </v-btn>
           </v-toolbar>
           <div class="sic-card-body">
-            <p class="body-2">{{p.name}}</p>
+            <p class="sic-card-name">{{p.name}}</p>
             <p class="sic-card-text">{{p.description}}</p>
             <div v-for="t in p.type" class="sic-card-chip">{{t}}</div>
           </div>

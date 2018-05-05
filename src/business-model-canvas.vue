@@ -97,9 +97,17 @@ export default {
   padding-right: 5px;
   text-align: left;
 }
+
+.sic-card-name {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  margin-right: 0px;
+  margin-left: 0px;
+}
 .sic-card-text {
   font-size: 12px;
-  font-weight: normal;
+  font-weight: 400;
   margin-bottom: 5px;
   margin-right: 0px;
   margin-left: 0px;
