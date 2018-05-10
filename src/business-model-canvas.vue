@@ -49,6 +49,10 @@
         </v-card>
       </v-flex>
     </v-layout>
+    <v-layout style="text-align: left;">
+      <p>Business Model Canvas Business Model Canvas by <a href="https://strategyzer.com/">Alexander Osterwalder</a>.</br>
+The business model canvas itself is licensed under the <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 Unported License</a>.</p>
+    </v-layout>
   </v-container>
 </template>
 
