@@ -11,8 +11,10 @@
     "build": "rimraf ./dist && webpack --config ./webpack.config.js"
   },
   "dependencies": {
+    "fecha": "^2.3.3",
     "uuid": "^3.2.1",
     "vue": "^2.5.13",
+    "vue-star-rating": "^1.6.0",
     "vuetify": "^1.0.0"
   },
   "devDependencies": {

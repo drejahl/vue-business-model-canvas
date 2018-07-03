@@ -2,7 +2,7 @@
   <v-card color="grey lighten-2">
     <v-toolbar flat color="grey darken-1" dark height="40px">
       <!--v-toolbar-side-icon></v-toolbar-side-icon-->
-      <v-btn icon style="margin-left: 0px;" @click.native.stop="create">
+      <v-btn v-if="editable" icon style="margin-left: 0px;" @click.native.stop="create">
         <v-icon>add</v-icon>
       </v-btn>
       <v-toolbar-title style="margin-left: 0px;" class="body-1">Key Resources</v-toolbar-title>
@@ -11,11 +11,20 @@
       <v-flex xs12 v-for="(p,i) in resources" :key="p.id">
         <v-card color="teal lighten-2" class="white--text">
           <v-toolbar flat color="teal lighten-1" dark height="20px">
-            <v-btn flat dark icon small style="margin-left: 0px;" @click.native.stop="edit(i)">
+            <v-btn v-if="editable" flat dark icon small style="margin-left: 0px;" @click.native.stop="edit(i)">
               <v-icon size="16px">edit</v-icon>
             </v-btn>
+            <v-btn v-if="enableComments" flat dark icon small style="margin-left: 0px;" @click.native.stop="$emit('newResourceComment', p)">
+              <v-icon size="16px">add_comment</v-icon>
+            </v-btn>
+            <v-btn v-if="enableComments && p.id" flat dark icon small style="margin-left: 0px;" @click.native.stop="$emit('newResourceRating', p)">
+              <ion-icon name="star-outline" style="font-size: 16px;margin-bottom: 3px;"></ion-icon>
+            </v-btn>
             <v-spacer></v-spacer>
-            <v-btn flat dark icon small style="margin-right: 0px;" @click.native.stop="del(i)">
+            <v-btn v-if="enableComments && p.id" flat dark icon small style="margin-left: 0px;" @click.native.stop="$emit('displayComments', p)">
+              <ion-icon name="chatboxes" style="font-size: 16px;margin-bottom: 3px;"></ion-icon>
+            </v-btn>
+            <v-btn v-if="editable" flat dark icon small style="margin-right: 0px;" @click.native.stop="del(i)">
               <v-icon size="16px">clear</v-icon>
             </v-btn>
           </v-toolbar>
@@ -67,7 +76,9 @@ export default {
   components: {
   },
   props: {
-    'resources': Array
+    'resources': Array,
+    'enableComments': Boolean,
+    'editable': Boolean
   },
   data () {
     return {
