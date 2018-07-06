@@ -3,7 +3,7 @@
     <v-layout column>
       <v-layout row wrap>
         <v-flex d-flex xs12 sm6 md2>
-          <BmcKeyPartners :partners="canvas.keyPartners" :businessModel="canvas":editable="editable" :enableComments="enableComments"
+          <BmcKeyPartners :partners="canvas.keyPartners" :businessModel="canvas" :editable="editable" :enableComments="enableComments"
             @newPartnerRating="newPartnerRating" @newPartnerComment="newPartnerComment" @displayComments="displayComments">
           </BmcKeyPartners>
         </v-flex>
@@ -53,7 +53,7 @@
             @newSegmentRating="newSegmentRating" @newSegmentComment="newSegmentComment" @displayComments="displayComments">
           </BmcCustomerSegments>
         </v-flex>
-        <v-flex v-if="enableComments" d-flex xs12 sm6 md2>
+        <v-flex v-if="enableComments && comments" d-flex xs12 sm6 md2>
           <v-layout column style="max-height: 750px;overflow:scroll;">
             <v-card v-for="comment in comments._embedded.item" :key="comment.id" v-if="!comment.subRefId">
               <v-card-title>
@@ -99,22 +99,24 @@ The business model canvas itself is licensed under the <a href="https://creative
           <span class="headline">Comments</span>
         </v-card-title>
       </v-card>
-      <v-card v-for="comment in comments._embedded.item" :key="comment.id" v-if="comment.subRefId && comment.subRefId===elementId">
-        <v-card-title>
-          <v-chip>
-            <v-avatar>
-              <img :src="comment.pictureURL" alt="user">
-            </v-avatar>
-            {{comment.userName}}
-          </v-chip>
-          <div style="text-align: left;">
-            <span class="grey--text">{{formatedDate(comment.created, "DD-MM-YYYY HH:mm:ss")}}</span><br>
-            <span class="grey--text">{{comment.refType}}</span><br>
-            <span>{{comment.body}}</span>
-            <star-rating v-if="comment.rating" :star-size="25" :rating="comment.rating" :read-only="true" :increment="0.01"></star-rating>
-          </div>
-        </v-card-title>
-      </v-card>
+      <div if="comments">
+        <v-card v-for="comment in comments._embedded.item" :key="comment.id" v-if="comment.subRefId && comment.subRefId===elementId">
+          <v-card-title>
+            <v-chip>
+              <v-avatar>
+                <img :src="comment.pictureURL" alt="user">
+              </v-avatar>
+              {{comment.userName}}
+            </v-chip>
+            <div style="text-align: left;">
+              <span class="grey--text">{{formatedDate(comment.created, "DD-MM-YYYY HH:mm:ss")}}</span><br>
+              <span class="grey--text">{{comment.refType}}</span><br>
+              <span>{{comment.body}}</span>
+              <star-rating v-if="comment.rating" :star-size="25" :rating="comment.rating" :read-only="true" :increment="0.01"></star-rating>
+            </div>
+          </v-card-title>
+        </v-card>
+      </div>
       <v-card>
         <v-card-actions>
           <v-spacer></v-spacer>
