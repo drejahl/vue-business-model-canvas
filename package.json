@@ -4,6 +4,11 @@
   "description": "Business Model Canvas component for VueJS 2.x",
   "author": "Dirk Rejahl",
   "main": "./lib/vue-bmc.min.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drejahl/vue-business-model-canvas.git"
+  },
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config test/ui/build/webpack.dev.conf.js",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
